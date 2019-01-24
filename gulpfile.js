@@ -7,6 +7,7 @@ const gulpIf = require('gulp-if')
 const cssnano = require('gulp-cssnano')
 const imagemin = require('gulp-imagemin')
 const cache = require('gulp-cache')
+const del = require('del')
 
 gulp.task('sass', function () {
     return gulp.src('app/scss/**/*.scss')
@@ -42,6 +43,10 @@ gulp.task('images', function () {
 gulp.task('fonts', function () {
     return gulp.src('app/fonts/**/*')
         .pipe(gulp.dest('dist/fonts'))
+})
+
+gulp.task('clean:dist', function () {
+    return del.sync('dist');
 })
 
 gulp.task('watch', function () {
