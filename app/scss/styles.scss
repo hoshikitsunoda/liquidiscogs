@@ -5,6 +5,16 @@ body {
     background: red;
 }
 
-.testing {
+.container {
   width: percentage(5/7);
+  height: 600px;
+  background: orange;
+  margin: 0 auto;
+
+  .inner {
+      width: 50%;
+      height: 90%;
+      background-color: pink;
+      margin: 0 auto;
+  }
 }
