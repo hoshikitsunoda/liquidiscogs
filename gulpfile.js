@@ -14,7 +14,9 @@ gulp.task('sass', function () {
     return gulp.src('app/scss/**/*.scss')
         .pipe(sass())
         .pipe(gulp.dest('app/css'))
-        .pipe(browserSync.stream())
+        .pipe(browserSync.reload({
+            stream: true
+        }))
 })
 
 gulp.task('browserSync', function () {

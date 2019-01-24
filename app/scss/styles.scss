@@ -2,37 +2,4 @@ html,
 body {
    margin: 0;
    padding: 0;
-   background: red;
-}
-
-.container {
-   width: percentage(5/7);
-   height: 600px;
-   background: orange;
-   margin: 0 auto;
-
-    .inner {
-        width: 50%;
-        height: 90%;
-        background-color: pink;
-        margin: 0 auto;
-        overflow: hidden;
-
-        * {
-            width: 30%;
-            height: 90%;
-        }
-
-        .left {
-            float: left;
-            background-color: aqua;
-            margin-left: 20%;
-        }
-
-        .right {
-            float: right;
-            background-color: antiquewhite;
-            margin-right: 20%;
-        }
-    }
 }
