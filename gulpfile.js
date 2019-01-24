@@ -8,6 +8,7 @@ const cssnano = require('gulp-cssnano')
 const imagemin = require('gulp-imagemin')
 const cache = require('gulp-cache')
 const del = require('del')
+const runSequence = require('run-sequence')
 
 gulp.task('sass', function () {
     return gulp.src('app/scss/**/*.scss')
@@ -55,3 +56,7 @@ gulp.task('watch', function () {
     gulp.watch('app/*.html', browserSync.reload)
     gulp.watch('app/js/**/*.js', browserSync.reload)
 })
+
+gulp.task('default', gulp.series('sass', 'useref', 'images', 'fonts', function (done) {
+    done();
+}));
