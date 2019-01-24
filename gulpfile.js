@@ -5,6 +5,7 @@ const useref = require('gulp-useref');
 const uglify = require('gulp-uglify');
 const gulpIf = require('gulp-if');
 const cssnano = require('gulp-cssnano');
+const imagemin = require('gulp-imagemin');
 
 gulp.task('sass', function () {
     return gulp.src('app/scss/**/*.scss')
@@ -27,6 +28,12 @@ gulp.task('useref', function () {
         .pipe(gulpIf('*.js', uglify()))
         .pipe(gulpIf('*.css', cssnano()))
         .pipe(gulp.dest('dist'))
+});
+
+gulp.task('images', function () {
+    return gulp.src('app/images/**/*.+(png|jpg|gif|svg)')
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/images'))
 });
 
 gulp.task('watch', function () {
