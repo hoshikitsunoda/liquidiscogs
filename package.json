@@ -23,6 +23,7 @@
     "run-sequence": "^2.2.1"
   },
   "dependencies": {
+    "express": "^4.16.4",
     "gulp-cssnano": "^2.1.3"
   }
 }
