@@ -8,7 +8,6 @@ const cssnano = require('gulp-cssnano')
 const imagemin = require('gulp-imagemin')
 const cache = require('gulp-cache')
 const del = require('del')
-const runSequence = require('run-sequence')
 
 gulp.task('sass', function () {
     return gulp.src('app/scss/**/*.scss')
@@ -22,7 +21,7 @@ gulp.task('sass', function () {
 gulp.task('browserSync', function () {
     browserSync.init({
         server: {
-            baseDir: 'app'
+            baseDir: 'app',
         },
     })
 })
@@ -52,13 +51,26 @@ gulp.task('clean:dist', function () {
     return del.sync('dist');
 })
 
+// gulp.task('nodemon', function (cb) {
+// 	let started = false;
+// 	return nodemon({
+// 		script: 'app.js'
+// 	}).on('start', function () {
+// 		if (!started) {
+// 			cb();
+// 			started = true; 
+// 		} 
+// 	});
+// });
+
 gulp.task('watch', function () {
     gulp.watch('app/scss/**/*.scss', gulp.series('sass'))
     gulp.watch('app/scss/**/*.scss', gulp.series('browserSync'))
-    gulp.watch('app/*.html', browserSync.reload)
-    gulp.watch('app/js/**/*.js', browserSync.reload)
+    gulp.watch('app/*.html').on('change', browserSync.reload)
+    gulp.watch('app/js/**/*.js').on('change', browserSync.reload)
 })
 
-gulp.task('default', gulp.series('sass', 'useref', 'images', 'fonts', function (done) {
+gulp.task('default', gulp.series('sass', 'useref', 'images', 'fonts', 'watch', function (done) {
+    express;
     done();
 }));
