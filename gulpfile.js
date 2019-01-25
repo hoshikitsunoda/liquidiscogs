@@ -8,7 +8,8 @@ const cssnano = require('gulp-cssnano')
 const imagemin = require('gulp-imagemin')
 const cache = require('gulp-cache')
 const del = require('del')
-const runSequence = require('run-sequence')
+// const runSequence = require('run-sequence')
+const nodemon = require('gulp-nodemon')
 
 gulp.task('sass', function () {
     return gulp.src('app/scss/**/*.scss')
@@ -51,6 +52,18 @@ gulp.task('fonts', function () {
 gulp.task('clean:dist', function () {
     return del.sync('dist');
 })
+
+gulp.task('nodemon', function (cb) {
+	let started = false;
+	return nodemon({
+		script: 'app.js'
+	}).on('start', function () {
+		if (!started) {
+			cb();
+			started = true; 
+		} 
+	});
+});
 
 gulp.task('watch', function () {
     gulp.watch('app/scss/**/*.scss', gulp.series('sass'))
