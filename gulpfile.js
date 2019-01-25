@@ -8,9 +8,6 @@ const cssnano = require('gulp-cssnano')
 const imagemin = require('gulp-imagemin')
 const cache = require('gulp-cache')
 const del = require('del')
-// const runSequence = require('run-sequence')
-const nodemon = require('gulp-nodemon')
-const express = require('./app.js')
 
 gulp.task('sass', function () {
     return gulp.src('app/scss/**/*.scss')
@@ -23,7 +20,9 @@ gulp.task('sass', function () {
 
 gulp.task('browserSync', function () {
     browserSync.init({
-        proxy: "localhost:3000"
+        server: {
+            baseDir: 'app',
+        },
     })
 })
 

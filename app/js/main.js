@@ -1,7 +1,9 @@
-fetch('https://api.discogs.com/users/hoshiki/collection/folders')
+fetch('http://api.discogs.com/users/hoshiki/collection/folders/0/releases?callback=&sort=added&sort_order=desc&per_page=100&key=wEVIKAPCOpkDUPHhSxXW&secret=WsURxnkSnnaTzftclOyydBDvSezuUFXD')
     .then(handleResponse)
     .then(function (data) {
-        console.log(data)
+        data.releases.forEach(item => {
+            console.log(item.basic_information.cover_image)
+        })
     })
     .catch(function handleError(error) {
         console.log(error)
