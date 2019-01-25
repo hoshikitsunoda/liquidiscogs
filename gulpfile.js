@@ -55,8 +55,8 @@ gulp.task('clean:dist', function () {
 gulp.task('watch', function () {
     gulp.watch('app/scss/**/*.scss', gulp.series('sass'))
     gulp.watch('app/scss/**/*.scss', gulp.series('browserSync'))
-    gulp.watch('app/*.html', browserSync.reload)
-    gulp.watch('app/js/**/*.js', browserSync.reload)
+    gulp.watch('app/*.html').on('change', browserSync.reload)
+    gulp.watch('app/js/**/*.js').on('change', browserSync.reload)
 })
 
 gulp.task('default', gulp.series('sass', 'useref', 'images', 'fonts', function (done) {
