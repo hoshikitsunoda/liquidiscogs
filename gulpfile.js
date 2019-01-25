@@ -10,6 +10,7 @@ const cache = require('gulp-cache')
 const del = require('del')
 // const runSequence = require('run-sequence')
 const nodemon = require('gulp-nodemon')
+const express = require('./app.js')
 
 gulp.task('sass', function () {
     return gulp.src('app/scss/**/*.scss')
@@ -22,9 +23,7 @@ gulp.task('sass', function () {
 
 gulp.task('browserSync', function () {
     browserSync.init({
-        server: {
-            baseDir: 'app'
-        },
+        proxy: "localhost:3000"
     })
 })
 
@@ -53,17 +52,17 @@ gulp.task('clean:dist', function () {
     return del.sync('dist');
 })
 
-gulp.task('nodemon', function (cb) {
-	let started = false;
-	return nodemon({
-		script: 'app.js'
-	}).on('start', function () {
-		if (!started) {
-			cb();
-			started = true; 
-		} 
-	});
-});
+// gulp.task('nodemon', function (cb) {
+// 	let started = false;
+// 	return nodemon({
+// 		script: 'app.js'
+// 	}).on('start', function () {
+// 		if (!started) {
+// 			cb();
+// 			started = true; 
+// 		} 
+// 	});
+// });
 
 gulp.task('watch', function () {
     gulp.watch('app/scss/**/*.scss', gulp.series('sass'))
@@ -72,6 +71,7 @@ gulp.task('watch', function () {
     gulp.watch('app/js/**/*.js').on('change', browserSync.reload)
 })
 
-gulp.task('default', gulp.series('sass', 'useref', 'images', 'fonts', function (done) {
+gulp.task('default', gulp.series('sass', 'useref', 'images', 'fonts', 'watch', function (done) {
+    express;
     done();
 }));
