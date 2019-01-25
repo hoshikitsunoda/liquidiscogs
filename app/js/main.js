@@ -2,7 +2,10 @@ fetch('http://api.discogs.com/users/hoshiki/collection/folders/0/releases?callba
     .then(handleResponse)
     .then(function (data) {
         data.releases.forEach(item => {
-            console.log(item.basic_information.cover_image)
+            // console.log(item.basic_information.cover_image)
+            const imgContainer = document.createElement('img')
+            imgContainer.setAttribute('src', item.basic_information.cover_image)
+            document.body.appendChild(imgContainer)
         })
     })
     .catch(function handleError(error) {
