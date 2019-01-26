@@ -1,6 +1,83 @@
+$base-font: 'Major Mono Display', monospace;
+$secondary-font: 'Open Sans', sans-serif;
+
 html,
 body {
    margin: 0;
    padding: 0;
-   background-color: grey;
+   background-color: #fff;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    flex-wrap: wrap;
+    padding: 5%;
+    margin: 0 auto;
+
+    .wrapper {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+
+        .image-container {
+            height: auto;
+            position: relative;
+            padding: 3px;
+            flex: 1 14%;
+
+            &:hover .info-box-wrapper {
+                display: block;
+            }
+    
+            img {
+                width: 100%;
+                height: 100%;
+            }
+
+            a {
+                color: #000;
+            }
+
+            .info-box-wrapper {
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                text-align: center;
+                width: 100%;
+                height: 100%;
+                background: -moz-linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(255, 255, 255, 0.7) 60%);
+                background: -webkit-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(255, 255, 255, 0.7) 60%);
+                background: -webkit-linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(255, 255, 255, 0.7) 60%);
+                background: -o-linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(255, 255, 255, 0.7) 60%);
+                background: -ms-linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(255, 255, 255, 0.7) 60%);
+                background: linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(255, 255, 255, 0.7) 60%);
+
+                .info-box {
+                    position: relative;
+                    top: 50%;
+                    transform: translateY(-50%);
+
+                    h3 {
+                        font-family: $base-font;
+                        margin: 10px 0;
+                        text-decoration: underline;
+                        text-decoration-color: rgb(216, 216, 216);
+                    }
+
+                    h5 {
+                        font-family: $secondary-font;
+                        margin: 0;
+                    }
+
+                    p {
+                        font-family: $secondary-font;
+                        margin: 10px 0;
+                    }
+                }
+            }
+        }
+    }
 }
