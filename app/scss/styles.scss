@@ -3,17 +3,25 @@ $secondary-font: 'Open Sans', sans-serif;
 
 html,
 body {
-   margin: 0;
-   padding: 0;
-   background-color: #fff;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
 }
 
 .container {
     display: flex;
     width: 80%;
     flex-wrap: wrap;
+    justify-content: center;
     padding: 5%;
     margin: 0 auto;
+
+    @media only screen and (max-width: 640px) {
+        width: 96%;
+        padding: 5% 2%;
+	}
 
     .wrapper {
         width: 100%;
@@ -25,15 +33,27 @@ body {
             height: auto;
             position: relative;
             padding: 3px;
-            flex: 1 14%;
+            flex: 1 1 14%;
+
+            @media only screen and (max-width: 640px) {
+                flex: 1 30%;
+            }
 
             &:hover .info-box-wrapper {
-                display: block;
+                // display: block;
+                opacity: 1;
+            }
+
+            &:hover .album-image {
+                filter: blur(2px);
             }
     
-            img {
-                width: 100%;
-                height: 100%;
+            .album-image {
+                padding-bottom: 100%;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center center;
+                border-radius: 5px;
             }
 
             a {
@@ -41,19 +61,22 @@ body {
             }
 
             .info-box-wrapper {
-                display: none;
+                // display: none;
+                opacity: 0;
                 position: absolute;
                 top: 0;
                 left: 0;
                 text-align: center;
                 width: 100%;
                 height: 100%;
-                background: -moz-linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(255, 255, 255, 0.7) 60%);
-                background: -webkit-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(255, 255, 255, 0.7) 60%);
-                background: -webkit-linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(255, 255, 255, 0.7) 60%);
-                background: -o-linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(255, 255, 255, 0.7) 60%);
-                background: -ms-linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(255, 255, 255, 0.7) 60%);
-                background: linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(255, 255, 255, 0.7) 60%);
+                background: -moz-linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(255, 255, 255, 0.8) 40%);
+                background: -webkit-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(255, 255, 255, 0.8) 40%);
+                background: -webkit-linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(255, 255, 255, 0.8) 40%);
+                background: -o-linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(255, 255, 255, 0.8) 40%);
+                background: -ms-linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(255, 255, 255, 0.8) 40%);
+                background: linear-gradient(to bottom,  rgba(137,255,241,0) 0%,rgba(255, 255, 255, 0.8) 40%);
+                border: 1px solid grey;
+                transition: 0.2s;
 
                 .info-box {
                     position: relative;
@@ -65,19 +88,43 @@ body {
                         margin: 10px 0;
                         text-decoration: underline;
                         text-decoration-color: rgb(216, 216, 216);
+
+                        @media only screen and (max-width: 1024px) {
+                            margin: 5px 0;
+                            font-size: 1rem;
+                        }
                     }
 
                     h5 {
                         font-family: $secondary-font;
                         margin: 0;
+
+                        @media only screen and (max-width: 1024px) {
+                            font-size: 0.8rem;
+                        }
                     }
 
                     p {
                         font-family: $secondary-font;
                         margin: 10px 0;
+
+                        @media only screen and (max-width: 1024px) {
+                            margin: 3px 0;
+                            font-size: 0.7rem;
+                        }
                     }
                 }
             }
+        }
+    }
+
+    .pagination {
+        margin: 40px 0 20px;
+
+        .load-more {
+            font-family: $base-font;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
     }
 }

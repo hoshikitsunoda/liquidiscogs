@@ -8,6 +8,7 @@ const cssnano = require('gulp-cssnano')
 const imagemin = require('gulp-imagemin')
 const cache = require('gulp-cache')
 const del = require('del')
+const terser = require('gulp-terser')
 
 gulp.task('sass', function () {
     return gulp.src('app/scss/**/*.scss')
@@ -29,7 +30,7 @@ gulp.task('browserSync', function () {
 gulp.task('useref', function () {
     return gulp.src('app/*.html')
         .pipe(useref())
-        .pipe(gulpIf('*.js', uglify()))
+        .pipe(gulpIf('*.js', terser()))
         .pipe(gulpIf('*.css', cssnano()))
         .pipe(gulp.dest('dist'))
 })
